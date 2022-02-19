@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "882091794168",
+    "project_id": "instagram-flutter-recode",
+    "storage_bucket": "instagram-flutter-recode.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:882091794168:android:dda213a97e8d9d41b3e50d",
+        "android_client_info": {
+          "package_name": "com.bahri.instagram_flutter_recode"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "882091794168-2iblgtvl98itfg5qua7bpou7k01qdl69.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYTTie1jPFf5BTRlA_zY-VmQgLfOGK6YA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "882091794168-2iblgtvl98itfg5qua7bpou7k01qdl69.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "882091794168-13tam986frntungv35e5enlu8ld266lp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.bahri.instagramFlutterRecode"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
