@@ -44,6 +44,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Intagram flutter clone',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData.dark().copyWith(
           scaffoldBackgroundColor: mobileBackgroundColor,
         ),
