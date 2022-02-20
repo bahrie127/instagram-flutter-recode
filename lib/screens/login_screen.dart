@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:instagram_flutter_recode/resources/auth_methods.dart';
-import 'package:instagram_flutter_recode/screens/home_screen.dart';
+import 'package:instagram_flutter_recode/responsive/mobile_screen_layout.dart';
+import 'package:instagram_flutter_recode/responsive/responsive_layout_screen.dart';
 import 'package:instagram_flutter_recode/screens/signup_screen.dart';
 import 'package:instagram_flutter_recode/utils/colors.dart';
 import 'package:instagram_flutter_recode/utils/utils.dart';
 import 'package:instagram_flutter_recode/widgets/text_field_input.dart';
+
+import '../responsive/web_screen_layout.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -38,7 +41,10 @@ class _LoginScreenState extends State<LoginScreen> {
     if (res == 'success') {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => HomeScreen(),
+          builder: (context) => const ResponsiveLayout(
+            webScreenLayout: WebScreenLayout(),
+            mobileScreenLayout: MobileScreenLayout(),
+          ),
         ),
       );
     } else {
