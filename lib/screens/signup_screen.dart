@@ -21,12 +21,34 @@ class _SignupScreenState extends State<SignupScreen> {
   TextEditingController _usernameController = TextEditingController();
   TextEditingController _bioController = TextEditingController();
   Uint8List? _image;
+  bool _isLoading = false;
 
   void selectImage() async {
     Uint8List image = await pickImage(ImageSource.gallery);
     setState(() {
       _image = image;
     });
+  }
+
+  void signUpUser() async {
+    setState(() {
+      _isLoading = true;
+    });
+    String res = await AuthMethods().signUpUser(
+      email: _emailController.text,
+      password: _passwordController.text,
+      username: _usernameController.text,
+      bio: _bioController.text,
+      file: _image!,
+    );
+
+    setState(() {
+      _isLoading = false;
+    });
+
+    if (res != 'success') {
+      showSnackBar(context, res);
+    }
   }
 
   @override
@@ -129,16 +151,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       height: 24,
                     ),
                     InkWell(
-                      onTap: () async {
-                        String res = await AuthMethods().signUpUser(
-                          email: _emailController.text,
-                          password: _passwordController.text,
-                          username: _usernameController.text,
-                          bio: _bioController.text,
-                          file: _image!,
-                        );
-                        print(res);
-                      },
+                      onTap: signUpUser,
                       child: Container(
                         child: const Text('Sign Up'),
                         width: double.infinity,
@@ -165,20 +178,28 @@ class _SignupScreenState extends State<SignupScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
-                          child: const Text('Don\'t have an account?'),
+                          child: const Text('Already have an account?'),
                           padding: const EdgeInsets.symmetric(
                             vertical: 8,
                           ),
                         ),
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.of(context).pop();
+                          },
                           child: Container(
-                            child: const Text(
-                              'Sign Up.',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
+                            child: _isLoading
+                                ? const Center(
+                                    child: CircularProgressIndicator(
+                                      color: primaryColor,
+                                    ),
+                                  )
+                                : const Text(
+                                    'Log In.',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
                             padding: const EdgeInsets.symmetric(
                               vertical: 8,
                             ),
