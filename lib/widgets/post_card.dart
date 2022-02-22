@@ -139,23 +139,42 @@ class PostCard extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 8),
                   child: RichText(
                     text: TextSpan(
-                        style: const TextStyle(color: primaryColor),
-                        children: [
-                          TextSpan(
-                            text: 'username',
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
+                      style: const TextStyle(color: primaryColor),
+                      children: [
+                        TextSpan(
+                          text: 'username',
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
                           ),
-                          TextSpan(
-                              text:
-                                  '  Hallo, Ini bagian deskripsi kontent nya... mantap.'),
-                        ]),
+                        ),
+                        TextSpan(
+                            text:
+                                '  Hallo, Ini bagian deskripsi kontent nya... mantap.'),
+                      ],
+                    ),
                   ),
                 ),
+                InkWell(
+                  onTap: () {},
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 4),
+                    child: Text(
+                      'View all 200 comments',
+                      style:
+                          const TextStyle(fontSize: 16, color: secondaryColor),
+                    ),
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.symmetric(vertical: 4),
+                  child: Text(
+                    '22/02/2022',
+                    style: TextStyle(fontSize: 16, color: secondaryColor),
+                  ),
+                )
               ],
             ),
-          )
+          ),
         ],
       ),
     );
