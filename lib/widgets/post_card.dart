@@ -179,7 +179,7 @@ class _PostCardState extends State<PostCard> {
                     );
                   },
                   icon: widget.snap['likes'].contains(user.uid)
-                      ? Icon(
+                      ? const Icon(
                           Icons.favorite,
                           color: Colors.red,
                         )
@@ -189,22 +189,24 @@ class _PostCardState extends State<PostCard> {
                 ),
               ),
               IconButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (_) => CommentsScreen(
-                        snap: widget.snap,
-                      ),
-                    ),
-                  );
+                onPressed: () async {
+                  await Navigator.of(context)
+                      .push(
+                        MaterialPageRoute(
+                          builder: (_) => CommentsScreen(
+                            snap: widget.snap,
+                          ),
+                        ),
+                      )
+                      .then((value) => getComments());
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.comment_outlined,
                 ),
               ),
               IconButton(
                 onPressed: () {},
-                icon: Icon(
+                icon: const Icon(
                   Icons.send,
                 ),
               ),
