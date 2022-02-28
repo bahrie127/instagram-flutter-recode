@@ -2,7 +2,6 @@ import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:instagram_flutter_recode/models/user.dart' as model;
 import 'package:instagram_flutter_recode/resources/storage_methods.dart';
 
@@ -85,5 +84,9 @@ class AuthMethods {
     DocumentSnapshot snap =
         await _firestore.collection('users').doc(currentUser.uid).get();
     return model.User.fromMap(snap.data() as Map<String, dynamic>);
+  }
+
+  Future<void> signOut() async {
+    await _auth.signOut();
   }
 }
